@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Scene, Router, Actions } from 'react-native-router-flux';
  import GreyScreen from './Components/GreyScreen';
-import ScarletScreen from './Components/ScarletScreen';
-
+import CameraScreen from './Components/CameraScreen';
+import HomeScreen from './Components/HomeScreen';
 export default class ImageSpace extends Component {
     render() {
         return (
@@ -11,23 +11,30 @@ export default class ImageSpace extends Component {
                         key="root"
                         hideNavBar
                     >
-                        <Scene
-                            key="ss"
-                            component={ScarletScreen}
-                            title=""
-                            direction="horizontal"
-                            initial
-                            duration={0}
-                        />
+                    <Scene
+                        key="HomeScreen"
+                        component={HomeScreen}
+                        title=""
+                        direction="horizontal"
+                        //initial
+                        duration={0}
+                    />
+                    <Scene
+                        key="CameraScreen"
+                        component={CameraScreen}
+                        title=""
+                        direction="horizontal"
+                        initial
+                        duration={0}
+                    />
+                    <Scene
+                        key="gs"
+                        component={GreyScreen}
+                        title=""
+                        direction="horizontal"
 
-                        <Scene
-                            key="gs"
-                            component={GreyScreen}
-                            title=""
-                            direction="horizontal"
-                            initial
-                            duration={0}
-                        />
+                        duration={0}
+                    />
                     </Scene>
                 </Router>
         );
