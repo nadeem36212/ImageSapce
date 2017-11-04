@@ -13,37 +13,37 @@
   } from 'react-native';
   import { Actions } from 'react-native-router-flux';
   var ImagePicker = require('react-native-image-picker');
-
+  import GreyScreen from './GreyScreen'
   export default class HomeScreen extends Component {
     constructor(props){
       super(props)
       this.state = {
         imgResponse:'',
         avatarSource:'',
-        photos:[],
+        photos:[1,2,3,4,5,6,7,8],
         PicturePath:'',
         AllPhotos:[]
         }
       }
     componentWillMount(){
-      console.log('photos list is',this.props.photosList);
+      console.log('props  list is',this.props.screenProps );
+
     }
     _keyExtractor = (item, index) => item.id;
     render(){
       return (
         <View style={styles.container}>
-          <View style={ styles.headerView }>
+          {/* <View style={ styles.headerView }>
             <Text style={ styles.headerText }>Photos List</Text>
-          </View>
-          <View style={ styles.photosListView }>
+          </View> */}
+          <View style={{ flex:1,margin:1 }}>
               <ScrollView>
                 <FlatList
                   contentContainerStyle={ styles.list }
                   keyExtractor={ this._keyExtractor }
-                  data={ this.props.photosList }
+                  data={ this.state.photos }
                   horizontal={false}
-                  numColumns={3}
-                  renderItem={ ({item,index}) =><Image source={{ uri: this.props.photosList[index] }} style={ styles.image } />}
+                  renderItem={ ({item,index}) =><GreyScreen key={ index } screenProps={ this.props.screenProps }/>}
                 />
               </ScrollView>
           </View>
@@ -54,7 +54,6 @@
   const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor:'black'
     },
     headerView:{
       backgroundColor:'black',
@@ -78,7 +77,5 @@
       height:100,
     },
     list:{
-      justifyContent: 'center',
-      margin:10,
     }
   });
